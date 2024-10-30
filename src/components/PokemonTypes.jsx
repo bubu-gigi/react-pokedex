@@ -17,10 +17,10 @@ import Rock from 'src/assets/images/types/rock.svg';
 import Steel from 'src/assets/images/types/steel.svg';
 import Water from 'src/assets/images/types/water.svg';
 
-function iconPicker(props) {
+function iconPicker(item) {
 	let icon = null;
 
-	switch (props) {
+	switch (item) {
 		case 'bug':
 			icon = Bug;
 			break;
@@ -87,11 +87,20 @@ function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export default function TypesList(props) {
-	iconPicker(props);
+export default function TypesList({ types }) {
+	if (!types) {
+		return (
+			<div className="flex items-center gap-2">
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+			</div>
+		);
+	}
+
 	return (
-		<ul className='flex items-start gap-2'>
-			{props['types'].map((item) => {
+		<ul className="flex items-start gap-2">
+			{types.map((item) => {
+				if (!item || !item.type) return null;
 				const logo = iconPicker(item.type.name);
 				return (
 					<li key={item.slot} className="inline-flex">

@@ -11,7 +11,6 @@ export default function PokemonList(props) {
 			);
 			const data = await response.json();
 			setCurrentList(data.results);
-			console.log(data.results);
 		};
 
         pokemonList();
@@ -19,7 +18,9 @@ export default function PokemonList(props) {
 
 	return (
 		<div className="mx-auto grid max-w-4xl grid-cols-2 gap-4">
-			<Pokemon pokemon={currentList} />
+			{currentList.map((item, index) => {
+				return <Pokemon key={index} pokemon={item}/>
+			})}
 		</div>
 	);
 }
