@@ -13,13 +13,22 @@ export default function PokemonList(props) {
 			setCurrentList(data.results);
 		};
 
-        pokemonList();
+		pokemonList();
 	}, [props.limit, props.offset]);
+
+	if (!currentList) {
+		return (
+			<div className="flex items-center gap-2">
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+			</div>
+		);
+	}
 
 	return (
 		<div className="mx-auto grid max-w-4xl grid-cols-2 gap-4">
 			{currentList.map((item, index) => {
-				return <Pokemon key={index} pokemon={item}/>
+				return <Pokemon key={index} pokemon={item} />;
 			})}
 		</div>
 	);

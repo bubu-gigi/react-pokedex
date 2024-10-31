@@ -21,8 +21,20 @@ export default function Pokemon(props) {
 		fetchPokemonData();
 	}, [props]);
 
+	if (!pokemonData) {
+		return (
+			<div className="flex items-center gap-2">
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+				<div className="size-6 animate-pulse rounded-full bg-gray-200"></div>
+			</div>
+		);
+	}
+
 	return (
-		<div key={pokemonData.name} className="flex items-center gap-x-2 rounded-xl bg-white p-6 shadow">
+		<div
+			key={pokemonData.name}
+			className="flex items-center gap-x-2 rounded-xl bg-white p-6 shadow"
+		>
 			<img className="h-20 w-20 shrink-0" src={pokemonData.sprite} alt={pokemonData.name} />
 			<div className="flex flex-col gap-y-2">
 				<h1 className="text-xl font-bold capitalize">{pokemonData.name}</h1>
