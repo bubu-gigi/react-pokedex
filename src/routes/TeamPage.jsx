@@ -1,8 +1,8 @@
 import HeroSection from 'src/components/HeroSection';
-import PokemonList from './components/PokemonList';
-import { useEffect, useState } from 'react';
+import PokemonList from 'src/components/PokemonList';
+import { useState } from 'react';
 
-export default function App() {
+export default function TeamPage() {
 	const [parameters, setParameters] = useState({ limit: 18, offset: 0 });
 
 	return (

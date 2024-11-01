@@ -98,7 +98,7 @@ export default function TypesList({ types }) {
 	}
 
 	return (
-		<ul className="flex items-start gap-2">
+		<ul className="flex justify-center gap-2">
 			{types.map((item) => {
 				if (!item || !item.type) return null;
 				const logo = iconPicker(item.type.name);
